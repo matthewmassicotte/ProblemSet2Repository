@@ -10,13 +10,13 @@ seed_url = "https://www.federalreserve.gov/newsevents/pressreleases"
 
 urls = [seed_url+".htm"]    #queue of urls to crawl
 seen = [seed_url+".htm"]    #stack of urls seen so far
-opened = []          #we keep track of seen urls so that we don't revisit them
+opened = []         
 containsCovid = []
 
 minCovidUrl = 25 #continue crawling until this many pages are found containing "covid"
 print("Starting with url="+str(urls))
 while len(urls) > 0 and len(containsCovid) < minCovidUrl:
-    # DEQUEUE A URL FROM urls AND TRY TO OPEN AND READ IT
+
     try:
         curr_url=urls.pop(0)
         req = urllib.request.Request(curr_url,headers={'User-Agent': 'Mozilla/5.0'})
